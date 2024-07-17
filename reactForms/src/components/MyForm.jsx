@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './MyForm.css'
 
 const MyForm =  ({user}) => {
+    // textArea
     // limpando forms
     //controlando inputs
     //envio de form
     // Gerenciamento de dados
     const [name, setName] = useState(user ? user.name : '')
     const [email, setEmail] = useState(user ? user.email : '')
+    const [bio,setBio] = useState("")
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -16,12 +18,13 @@ const MyForm =  ({user}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("Enviando o formulário")
-        console.log(name, email)
+        console.log(name, email, bio)
 
         //cleaning form
 
         setName("")
         setEmail("")
+        setBio("")
     }
 
     // console.log(name)
@@ -40,6 +43,11 @@ const MyForm =  ({user}) => {
                     <span>E-mail</span>
                     <input type="email" name="email" placeholder="Digite o seu E-mail" onChange={(e) => setEmail(e.target.value)} value = {email}/>
                 </label>
+                 {/* TextArea */}
+                 <label>
+                    <span>bio</span>
+                    <textarea name="bio" placeholder="Descrição do usuário" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+                 </label>
                 <input type="submit"  value="Enviar"/>
             </form>
         </div>
